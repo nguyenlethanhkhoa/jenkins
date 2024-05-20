@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        dockerfile {
-            filename 'src/Dockerfile'
-        }
-    }
+    agent any
 
     stages {
         stage('Build PR') {
