@@ -16,7 +16,7 @@ pipeline {
 
                 script {
                     isDevelop = env.CHANGE_TARGET == 'develop'
-                    isPullRequest = env.BRANCH_NAME =~ /PR-.*/
+                    isPullRequest = (env.BRANCH_NAME =~ /PR-.*/)
 
                     echo "isDevelop : ${isDevelop} , isPullRequest : ${isPullRequest}"
                 }
