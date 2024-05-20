@@ -7,7 +7,8 @@ pipeline {
             steps {
                 echo ' -------------------------Build Stage --------------------------- '
                 
-                sh("./build.sh")
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh "./build.sh"
             }
         }
     }
