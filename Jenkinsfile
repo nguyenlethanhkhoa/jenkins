@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
 
     stages {
         stage('Build PR') {
@@ -21,6 +21,11 @@ pipeline {
                 
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh "./build.sh"
+
+                script {
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    customImage.push()
+                }
             }
         }
     }
