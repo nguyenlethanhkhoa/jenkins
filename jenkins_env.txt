@@ -1,0 +1,10 @@
+BRANCH_NAME                 : PR-2
+BRANCH_IS_PRIMARY           :
+CHANGE_ID                   : 2
+CHANGE_URL                  : https://github.com/nguyenlethanhkhoa/jenkins/pull/2
+CHANGE_TITLE                : Feature/f1
+CHANGE_AUTHOR               : nguyenlethanhkhoa
+CHANGE_AUTHOR_DISPLAY_NAME  : Khoa Nguyễn
+CHANGE_AUTHOR_EMAIL         :
+CHANGE_TARGET               : develop
+CHANGE_BRANCH               : feature/f1
