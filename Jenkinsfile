@@ -21,6 +21,7 @@ pipeline {
             steps {
                 echo ' ------------------------- Build Stage --------------------------- '
 
+                sh "chmod +x ./build.sh"
                 sh "./build.sh"
                 // script {
                 //     def image = docker.build("python_app:${env.BUILD_ID}")
