@@ -20,7 +20,7 @@ pipeline {
 
             steps {
                 echo ' ------------------------- Build Docker Image --------------------------- '
-                sh "docker build -t python_app:${env.CHANGE_ID} -f app/Dockerfile ."
+                sh "docker build -t python_app:${env.CHANGE_ID} app"
 
             }
         }
