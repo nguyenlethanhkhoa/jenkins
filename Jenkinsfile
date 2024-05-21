@@ -21,10 +21,10 @@ pipeline {
             steps {
                 echo ' ------------------------- Build Stage --------------------------- '
 
-                sh build.sh
+                sh "./build.sh"
                 // script {
-                //     def customImage = docker.build("my-image:${env.BUILD_ID}")
-                //     customImage.push()
+                //     def image = docker.build("python_app:${env.BUILD_ID}")
+                //     image.push()
                 // }
             }
         }
