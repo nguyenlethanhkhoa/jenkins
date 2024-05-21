@@ -3,11 +3,7 @@ pipeline {
 
     stages {
         stage('Build PR') {
-            agent {
-                dockerfile {
-                    filename 'src/Dockerfile'
-                }
-            }
+            agent any
 
             when {
                 beforeAgent true
@@ -23,8 +19,9 @@ pipeline {
             }
 
             steps {
-                echo ' -------------------------Build Stage --------------------------- '
+                echo ' ------------------------- Build Stage --------------------------- '
 
+                sh build.sh
                 // script {
                 //     def customImage = docker.build("my-image:${env.BUILD_ID}")
                 //     customImage.push()
