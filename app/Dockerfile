@@ -4,7 +4,7 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY ./src /app/src
-COPY requirement.txt /app
+COPY ./requirement.txt /app
 
 RUN pip install -r requirement.txt
 
