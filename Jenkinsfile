@@ -43,10 +43,8 @@ pipeline {
             steps {
                 echo " ------------------------- Test python_app:${env.BUILD_NUMBER} --------------------------- "
 
-                sh "touch ./pytest_result.xml"
-                sh "ls -l ."
-                sh "docker run --mount type=bind,source=./pytest_result.xml,target=/app/pytest_result.xml --entrypoint pytest python_app:${env.BUILD_NUMBER} ./src --junitxml=pytest_result.xml"
-                sh "cat pytest_result.xml"
+                sh "docker run -v ./test_result:/app/test_result --entrypoint pytest python_app:${env.BUILD_NUMBER} ./src --junitxml=./test_result/unittest.xml"
+                sh "cat test_result/unittest.xml"
             }
         }
     }
