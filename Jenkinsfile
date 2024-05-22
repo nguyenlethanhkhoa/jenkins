@@ -42,7 +42,9 @@ pipeline {
 
             steps {
                 echo " ------------------------- Test python_app:${env.BUILD_NUMBER} --------------------------- "
-                sh "docker run --entrypoint pytest python_app:${env.BUILD_NUMBER} ./src"
+
+                sh "docker run --entrypoint pytest python_app:${env.BUILD_NUMBER} ./src --junitxml=./test_result.xml"
+                sh "cat ./test_result.xml"
             }
         }
     }
