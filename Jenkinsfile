@@ -19,9 +19,12 @@ pipeline {
             }
 
             steps {
-                echo ' ------------------------- Build Docker Image --------------------------- '
-                sh "docker build -t python_app:${env.CHANGE_ID} app"
+                echo " ------------------------- Build python_app:${env.BUILD_NUMBER} --------------------------- "
+                // sh "docker build -t python_app:${env.CHANGE_ID} app"
 
+                script {
+                    def image = docker.build("python_app:${env.BUILD_NUMBER}", "app")
+                }
             }
         }
 
@@ -42,9 +45,16 @@ pipeline {
             }
 
             steps {
-                echo ' ------------------------- Build Docker Image --------------------------- '
+                echo " ------------------------- Test python_app:${env.BUILD_NUMBER} --------------------------- "
 
-                sh "docker run --entrypoint pytest /src --junitxml=./test_result.xml python_app:${env.CHANGE_ID}"
+                // sh "docker run --entrypoint pytest /src --junitxml=./test_result.xml python_app:${env.CHANGE_ID}"
+
+                script {
+                    dockerImage.inside {
+                        sh 'pytest /app/src --junitxml=./test_result.xml'
+                        sh 'cat ./test_result.xml'
+                    }
+                }
             }
         }
     }
