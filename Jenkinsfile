@@ -42,7 +42,7 @@ pipeline {
 
             steps {
                 echo " ------------------------- Test python_app:${env.BUILD_NUMBER} --------------------------- "
-                sh "docker run --entrypoint pytest python_app:${env.CHANGE_ID} ./src"
+                sh "docker run --entrypoint pytest python_app:${env.BUILD_NUMBER} ./src"
             }
         }
     }
