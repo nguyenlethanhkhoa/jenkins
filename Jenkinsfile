@@ -47,13 +47,10 @@ pipeline {
             steps {
                 echo " ------------------------- Test python_app:${env.BUILD_NUMBER} --------------------------- "
 
-                // sh "docker run --entrypoint pytest /src --junitxml=./test_result.xml python_app:${env.CHANGE_ID}"
+                // sh "docker run --entrypoint pytest ./src --junitxml=./test_result.xml python_app:${env.CHANGE_ID}"
 
-                script {
-                    image.inside {
-                        sh 'pytest /app/src --junitxml=./test_result.xml'
-                        sh 'cat ./test_result.xml'
-                    }
+                image.inside {
+                    sh 'pytest ./src'
                 }
             }
         }
