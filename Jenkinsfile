@@ -44,7 +44,6 @@ pipeline {
                 echo " ------------------------- Test python_app:${env.BUILD_NUMBER} --------------------------- "
 
                 sh "docker run -v ./test_result:/app/test_result --entrypoint pytest python_app:${env.BUILD_NUMBER} ./src --junitxml=./test_result/unittest.xml"
-                junit 'test_result/unittest.xml'
             }
         }
     }
