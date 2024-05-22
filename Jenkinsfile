@@ -23,7 +23,7 @@ pipeline {
                 // sh "docker build -t python_app:${env.CHANGE_ID} app"
 
                 script {
-                    def image = docker.build("python_app:${env.BUILD_NUMBER}", "app")
+                    image = docker.build("python_app:${env.BUILD_NUMBER}", "app")
                 }
             }
         }
