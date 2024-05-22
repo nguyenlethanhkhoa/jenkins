@@ -50,7 +50,7 @@ pipeline {
                 // sh "docker run --entrypoint pytest /src --junitxml=./test_result.xml python_app:${env.CHANGE_ID}"
 
                 script {
-                    dockerImage.inside {
+                    image.inside {
                         sh 'pytest /app/src --junitxml=./test_result.xml'
                         sh 'cat ./test_result.xml'
                     }
